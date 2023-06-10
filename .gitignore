@@ -1,0 +1,14 @@
+/bin/
+/browserstack.err
+/target/
+*.prefs
+.project
+.classpath
+/update-helm.sh
+/log/
+temporaryFile.*
+.DS_Store
+.idea/*
+shared-local-instance.db
+LocalSetupFiles/
+*.iml
