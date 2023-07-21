@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sample.project.domain.component.accessibility.AccessibilityWrapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,5 +36,10 @@ public class GovUkSearchResultPage extends GovHomePage {
         LOGGER.info("verify user is on search result page");
         String originalSearchTerm = Serenity.sessionVariableCalled("searchTerm").toString();
         Assert.assertTrue(getDriver().getCurrentUrl().contains("keywords=" + originalSearchTerm));
+    }
+
+
+    public void runAccessibilityChecks(){
+        AccessibilityWrapper.checkPageForAccessibility(getDriver());
     }
 }

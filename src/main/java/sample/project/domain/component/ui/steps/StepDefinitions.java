@@ -1,5 +1,6 @@
 package sample.project.domain.component.ui.steps;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -41,4 +42,8 @@ public class StepDefinitions {
     }
 
 
+    @And("I run accessibility check")
+    public void iRunAccessibilityCheck() {
+        uiStepLib.checkAccessiblity();
+    }
 }

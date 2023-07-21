@@ -19,35 +19,35 @@ public class BrowserListener implements WebDriverListener {
     @Override
     public void afterGet(WebDriver driver, String url) {
         if (!driver.getCurrentUrl().contains(BLANK_TAB)) {
-            AccessibilityWrapper.checkPageForAccessibility(driver);
+//            AccessibilityWrapper.checkPageForAccessibility(driver);
         }
     }
 
     @Override
     public void afterClick(WebElement element) {
         if (!driver.getCurrentUrl().contains(BLANK_TAB)) {
-            AccessibilityWrapper.checkPageForAccessibility(driver);
+//            AccessibilityWrapper.checkPageForAccessibility(driver);
         }
     }
 
     @Override
     public void afterBack(WebDriver.Navigation navigation) {
         if (!driver.getCurrentUrl().contains(BLANK_TAB)) {
-            AccessibilityWrapper.checkPageForAccessibility(driver);
+//            AccessibilityWrapper.checkPageForAccessibility(driver);
         }
     }
 
     @Override
     public void afterForward(WebDriver.Navigation navigation) {
         if (!driver.getCurrentUrl().contains(BLANK_TAB)) {
-            AccessibilityWrapper.checkPageForAccessibility(driver);
+//            AccessibilityWrapper.checkPageForAccessibility(driver);
         }
     }
 
     @Override
     public void onError(Object target, Method method, Object[] args, InvocationTargetException e) {
         if (!driver.getCurrentUrl().contains(BLANK_TAB)) {
-            AccessibilityWrapper.checkPageForAccessibility(driver);
+//            AccessibilityWrapper.checkPageForAccessibility(driver);
         }
 
     }

@@ -50,5 +50,8 @@ public class UiStepLib {
         StepEventBus.getEventBus().getBaseStepListener().getCurrentTestOutcome().setTitle(newTitle);
     }
 
+    public void checkAccessiblity() {
+        searchResultPage.runAccessibilityChecks();
+    }
 }
 

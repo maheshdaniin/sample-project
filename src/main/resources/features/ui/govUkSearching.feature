@@ -7,6 +7,7 @@ Feature: UI Test
       When I search for "Citizen"
       Then I am on search result page
       And I should find "Citizen" related results
+      And I run accessibility check
 
       Examples:
         | browser |
