@@ -12,3 +12,16 @@ Feature: UI Test
       Examples:
         | browser |
         | firefox |
+
+
+
+    Scenario Outline: Searching for Citizen in google home page
+      Given I use the <browser> browser
+      And I open google search page
+      When I search for "Citizen" in google search page
+      Then I am on google result page
+      And I run accessibility check
+
+      Examples:
+        | browser |
+        | firefox |

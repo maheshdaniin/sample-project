@@ -7,6 +7,7 @@ import org.apache.commons.lang.StringUtils;
 import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sample.project.domain.component.ui.pages.GoogleHomePage;
 import sample.project.domain.component.ui.pages.GovHomePage;
 import sample.project.domain.component.ui.pages.GovUkSearchResultPage;
 import sample.project.domain.component.utils.Configuration;
@@ -15,6 +16,7 @@ import sample.project.domain.component.utils.Configuration;
 public class UiStepLib {
     private GovHomePage govHomePage;
     private GovUkSearchResultPage searchResultPage;
+    private GoogleHomePage googleHomePage;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UiStepLib.class);
 
@@ -52,6 +54,20 @@ public class UiStepLib {
 
     public void checkAccessiblity() {
         searchResultPage.runAccessibilityChecks();
+    }
+
+    public void openGoogleSearchPage() {
+        googleHomePage.open();
+        googleHomePage.clickAcceptAllOnPopUp();
+    }
+
+    public void searchForTextInGoogle(String text) {
+        googleHomePage.searchForAtext(text);
+    }
+
+    public void validateOnGoogleSearchResultPage() {
+        googleHomePage.validateOnSearchResult();
+
     }
 }
 

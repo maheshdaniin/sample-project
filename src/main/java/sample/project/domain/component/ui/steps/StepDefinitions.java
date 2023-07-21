@@ -30,7 +30,8 @@ public class StepDefinitions {
     }
 
     @Then("I am on search result page")
-    public void iAmOnSearchResultPage() {
+    public void
+    iAmOnSearchResultPage() {
         uiStepLib.verifyUserIsOnSearchResultPage();
     }
 
@@ -45,5 +46,21 @@ public class StepDefinitions {
     @And("I run accessibility check")
     public void iRunAccessibilityCheck() {
         uiStepLib.checkAccessiblity();
+    }
+
+    @And("I open google search page")
+    public void iOpenGoogleSearchPage() {
+
+        uiStepLib.openGoogleSearchPage();
+    }
+
+    @When("I search for {string} in google search page")
+    public void iSearchForInGoogleSearchPage(String text) {
+        uiStepLib.searchForTextInGoogle(text);
+    }
+
+    @Then("I am on google result page")
+    public void iAmOnGoogleResultPage() {
+        uiStepLib.validateOnGoogleSearchResultPage();
     }
 }
