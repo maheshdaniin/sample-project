@@ -12,3 +12,6 @@ temporaryFile.*
 shared-local-instance.db
 LocalSetupFiles/
 *.iml
+.idea
+.idea/
+sample-project.iml
