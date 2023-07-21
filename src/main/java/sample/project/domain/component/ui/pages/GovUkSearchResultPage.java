@@ -40,6 +40,7 @@ public class GovUkSearchResultPage extends GovHomePage {
 
 
     public void runAccessibilityChecks(){
+
         AccessibilityWrapper.checkPageForAccessibility(getDriver());
     }
 }
