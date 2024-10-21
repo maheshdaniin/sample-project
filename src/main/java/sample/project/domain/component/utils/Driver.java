@@ -1,7 +1,10 @@
 package sample.project.domain.component.utils;
 
 import net.thucydides.core.webdriver.DriverSource;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.logging.LogType;
@@ -11,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sample.project.domain.component.accessibility.BrowserListener;
 
+import java.util.Optional;
 import java.util.logging.Level;
 
 
@@ -41,7 +45,9 @@ public class Driver implements DriverSource {
         switch (browser) {
             case "firefox":
                 return new FirefoxDriver(getDefaultFirefoxOptions());
-                default:
+            case "chrome":
+                return new ChromeDriver(getDefaultChromeOptions());
+            default:
                 return null;
         }
     }
@@ -66,6 +72,39 @@ public class Driver implements DriverSource {
             LOGGER.info("Test is ignoring invalid certificates");
         }
 
+        return options;
+    }
+
+    private ChromeOptions getDefaultChromeOptions() {
+        System.setProperty("webdriver.chrome.logfile", "/tmp/chromedriver.log");
+        System.setProperty("webdriver.chrome.verboseLogging", "true");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments(new String[]{"--disable-extensions"});
+        boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
+        options.addArguments(new String[]{"--remote-allow-origins=*"});
+        options.addArguments(new String[]{"--no-first-run"});
+        options.addArguments(new String[]{"--window-size=1920,1080"});
+        if (!headless && !this.os.contains("Linux")) {
+            if (this.os.contains("Windows")) {
+                options.addArguments(new String[]{"start-maximized"});
+            }
+        } else {
+            options.addArguments(new String[]{"--headless=new"});
+            options.addArguments(new String[]{"--no-sandbox"});
+            options.addArguments(new String[]{"--disable-gpu"});
+            options.addArguments(new String[]{"--disable-dev-shm-usage"});
+        }
+
+        if ("chrome-zapProxy".equals(this.browser)) {
+            options.addArguments(new String[]{"--ignore-certificate-errors"});
+            options.addArguments(new String[]{"--disable-dev-shm-usage"});
+            options.setPageLoadStrategy(PageLoadStrategy.NONE);
+        }
+
+        if (((String) Optional.ofNullable(Configuration.get("ignore_certificate_errors")).orElse("false")).equals("true")) {
+            options.addArguments(new String[]{"--ignore-certificate-errors"});
+            LOGGER.info("Test is ignoring invalid certificates");
+        }
         return options;
     }
 
