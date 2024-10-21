@@ -11,7 +11,7 @@ Feature: UI Test
 
       Examples:
         | browser |
-        | firefox |
+        | chrome |
 
 
 
@@ -24,4 +24,4 @@ Feature: UI Test
 
       Examples:
         | browser |
-        | firefox |
+        | chrome |

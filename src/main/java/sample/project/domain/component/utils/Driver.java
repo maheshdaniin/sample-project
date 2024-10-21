@@ -59,11 +59,9 @@ public class Driver implements DriverSource {
      */
     private FirefoxOptions getDefaultFirefoxOptions() {
         FirefoxOptions options = new FirefoxOptions();
-        options.setHeadless(true);
         options.setAcceptInsecureCerts(false);
         options.addArguments("-allow-origins");
         options.setCapability("webSocketUrl", true);
-//        options.addArguments("-remote-allow-origins");
         options.addArguments("-no-sandbox");
         options.addArguments("-disable-dev-shm-usage");
         options.addArguments("-allow-host=localhost");

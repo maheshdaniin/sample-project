@@ -1,7 +1,7 @@
 package sample.project.domain.component.ui.pages;
 
+import net.serenitybdd.annotations.DefaultUrl;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

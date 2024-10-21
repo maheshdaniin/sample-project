@@ -5,7 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lombok.extern.slf4j.Slf4j;
-import net.thucydides.core.annotations.Steps;
+import net.serenitybdd.annotations.Steps;
 import sample.project.domain.component.ui.stepLib.UiStepLib;
 
 @Slf4j
