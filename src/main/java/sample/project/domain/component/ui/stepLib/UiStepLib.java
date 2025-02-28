@@ -3,7 +3,7 @@ package sample.project.domain.component.ui.stepLib;
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.steps.StepEventBus;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +46,9 @@ public class UiStepLib {
     public void setBrowser(String browser) {
         LOGGER.info("Setting browser to {}", browser);
         Configuration.setConfigurationProperty("webdriver.browser", browser);
+        String originalTitle = StepEventBus.getEventBus().getBaseStepListener().getCurrentTestOutcome().getTitle();
+        String newTitle = String.format("(%s) - %s", StringUtils.capitalize(browser), originalTitle);
+        StepEventBus.getEventBus().getBaseStepListener().getCurrentTestOutcome().setTitle(newTitle);
     }
 
     public void checkAccessiblity() {

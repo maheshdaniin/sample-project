@@ -11,7 +11,7 @@ public class GovHomePage extends PageObject {
     @FindBy(xpath = "(//input[contains(@id,\"search-main-\")])[2]")
     WebElement searchMain;
 
-    @FindBy(xpath = "//button[@class=\"gem-c-search__submit\"] [@data-track-category=\"homepageClicked\"]")
+    @FindBy(css = "form[action='/search/all'] button[type='submit']")
     WebElement searchSubmit;
 
     public void Search(String term) {

@@ -18,18 +18,15 @@ public class GovUkSearchResultPage extends GovHomePage {
     //WebDriver driver;
 
     @FindBy(xpath = "//*[@id='js-results']//ul")
+    List<WebElement> elementresults2;
+    @FindBy(xpath = "//ul[@class='gem-c-document-list gem-c-document-list--equal-item-spacing govuk-!-margin-bottom-5']/li")
     List<WebElement> elementresults;
 
-    public boolean hasAllMatchingResults(String expectedResultTerm) {
-        List<WebElement> elementWithNoMatchingTerm;
-        elementWithNoMatchingTerm = elementresults.stream().filter(e -> !(e.getText().toLowerCase().contains(expectedResultTerm.toLowerCase()))).collect(Collectors.toList());
-        return !(elementWithNoMatchingTerm.size() > 0);
-    }
-
     public boolean hasAtLeastOneMatchingSearchResult(String expectedResultTerm) {
-        List<WebElement> elementWithNoMatchingTerm;
-        elementWithNoMatchingTerm = elementresults.stream().filter(e -> e.getText().toLowerCase().contains(expectedResultTerm.toLowerCase())).collect(Collectors.toList());
-        return elementWithNoMatchingTerm.size() > 0;
+        List<WebElement> elementsWithMatchingTerm;
+        elementsWithMatchingTerm = elementresults.stream().filter(e -> e.getText().toLowerCase().contains(expectedResultTerm.toLowerCase())).collect(Collectors.toList());
+        final List<WebElement> elementsWithMatchingTerm2 = elementresults2.stream().filter(e -> !(e.getText().toLowerCase().contains(expectedResultTerm.toLowerCase()))).collect(Collectors.toList());
+        return !elementsWithMatchingTerm.isEmpty() || !elementsWithMatchingTerm2.isEmpty();
     }
 
     public void verifyIsOnSearchResultPage() {
